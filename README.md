@@ -28,3 +28,7 @@ mkdir -p ${KF_DIR}
 cd ${KF_DIR}
 kfctl apply -V -f ${CONFIG_URI}
 ```
+
+#### Errors:
+If you have the error `Encountered error applying application ...` then run 
+- `kfctl apply -V -f kfctl_k8s_istio.v1.0.0.yaml`
