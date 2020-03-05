@@ -1,14 +1,29 @@
 FROM ubuntu:18.04
 
-MAINTAINER Alex Iankoulski <alex_iankoulski@yahoo.com>
+# Install curl
+RUN apt-get update
+RUN apt-get install -y curl
 
-ARG http_proxy
-ARG https_proxy
-ARG no_proxy
+# Install kubectl 
 
-ADD Container-Root /
+# Set the Kubernetes version as found in the UCP Dashboard or API
+RUN k8sversion=v1.15.5
 
-RUN export http_proxy=$http_proxy; export https_proxy=$https_proxy; export no_proxy=$no_proxy; /setup.sh; rm -f /setup.sh
+# Get the kubectl binary.
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/bin/linux/amd64/kubectl
 
-CMD /startup.sh
+# Make the kubectl binary executable.
+RUN chmod +x ./kubectl
 
+# Move the kubectl executable to /usr/local/bin.
+RUN mv ./kubectl /usr/local/bin/kubectl
+
+
+# Install kfctl
+
+RUN curl -o kfctl_v1.0.0_linux.tar.gz -L0 https://github.com/kubeflow/kfctl/releases/download/v1.0/kfctl_v1.0-0-g94c35cf_linux.tar.gz
+RUN tar -xvf kfctl_v1.0.0_linux.tar.gz
+RUN mv ./kfctl /usr/local/bin/kfctl
+RUN rm -rf kfctl_v1.0.0_linux.tar.gz
+
+ADD config /root/.kube/config
