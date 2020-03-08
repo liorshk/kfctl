@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM python:3
 
 # Install curl
 RUN apt-get update
@@ -26,4 +26,6 @@ RUN tar -xvf kfctl_v1.0.0_linux.tar.gz
 RUN mv ./kfctl /usr/local/bin/kfctl
 RUN rm -rf kfctl_v1.0.0_linux.tar.gz
 
+
 ADD config /root/.kube/config
+
