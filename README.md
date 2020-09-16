@@ -20,7 +20,7 @@ Replace `~/.kube/` with the path of your config (on windows it's on `%USERPROFIL
 Like described here: https://www.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/
 ```
 export KFAPP=localkf
-export CONFIG_URI="https://raw.githubusercontent.com/kubeflow/manifests/v1.0-branch/kfdef/kfctl_k8s_istio.v1.0.0.yaml"
+export CONFIG_URI="https://raw.githubusercontent.com/kubeflow/manifests/v1.1-branch/kfdef/kfctl_k8s_istio.v1.1.0.yaml"
 export KF_NAME=localkf
 export BASE_DIR=.
 export KF_DIR=${BASE_DIR}/${KF_NAME}
@@ -32,7 +32,7 @@ kfctl apply -V -f ${CONFIG_URI}
 
 #### Errors:
 If you have the error `Encountered error applying application cert-manager...` then run 
-- `kfctl apply -V -f kfctl_k8s_istio.v1.0.0.yaml`
+- `kfctl apply -V -f kfctl_k8s_istio.v1.1.0.yaml`
 
 
 --------------------------
