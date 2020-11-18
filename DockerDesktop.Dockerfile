@@ -21,7 +21,7 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 
 # Install kfctl
 
-RUN curl -o kfctl_v1.0.0_linux.tar.gz -L0 https://github.com/kubeflow/kfctl/releases/download/v1.1.0/kfctl_v1.1.0-0-g9a3621e_linux.tar.gz
+RUN curl -o kfctl_v1.1.0_linux.tar.gz -L0 https://github.com/kubeflow/kfctl/releases/download/v1.1.0/kfctl_v1.1.0-0-g9a3621e_linux.tar.gz
 RUN tar -xvf kfctl_v1.1.0_linux.tar.gz
 RUN mv ./kfctl /usr/local/bin/kfctl
 RUN rm -rf kfctl_v1.1.0_linux.tar.gz
